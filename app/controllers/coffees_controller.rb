@@ -1,6 +1,7 @@
 class CoffeesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    
+    skip_before_action :authorize, only: :index
+
     def index 
         render json: Coffee.all, status: :ok
     end 
@@ -27,6 +28,7 @@ class CoffeesController < ApplicationController
         head :no_content 
     end 
 
+
     private
     
     #Review strong params and why they are useful with updates
@@ -37,4 +39,6 @@ class CoffeesController < ApplicationController
     def render_not_found_response
         render json: {error: "Coffee not found."}, status: :not_found
     end
+
+   
 end

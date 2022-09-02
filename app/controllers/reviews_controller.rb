@@ -1,16 +1,18 @@
 class ReviewsController < ApplicationController
+    skip_before_action :authorize, only: :index
     def index 
+        
         if params[:coffee_id] 
             coffee = Coffee.find(params[:coffee_id])
             
             coffee_reviews = coffee.reviews
-            
+           
         elsif params[:user_id]
             user = User.find(params[:user_id])
              coffee_reviews = user.reviews
 
         else 
-            reviews = Review.all
+            coffee_reviews = Review.all
         end
     
         render json: coffee_reviews, status: :ok

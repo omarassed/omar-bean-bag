@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :coffees do
     resources :reviews, only: [:index, :show, :create, :destroy]
   end
-  
+
   resources :reviews, only: [:index, :show, :create, :destroy]
 
   resources :users, only: [:index, :show, :create] do
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   
  
-  
+  get "/users/:id/favorite_coffees", to: "users#favorite_coffees"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/me", to: "users#show"

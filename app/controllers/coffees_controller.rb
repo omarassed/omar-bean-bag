@@ -1,6 +1,6 @@
 class CoffeesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    skip_before_action :authorize, only: :index
+    skip_before_action :authorize, only: [:index, :get_reviews]
 
     def index 
         render json: Coffee.all, status: :ok
@@ -8,7 +8,7 @@ class CoffeesController < ApplicationController
 
     def show
         coffee = Coffee.find(params[:id])
-        render json: coffee, status: :ok
+        render json: coffee, include: :reviews, status: :ok
     end 
 
     def create
@@ -23,17 +23,23 @@ class CoffeesController < ApplicationController
     end 
 
     def destroy
-        coffee = Coffee.find(params[:id])
+        coffee = Coffee.find(coffee_params[:id])
         coffee.destroy
         head :no_content 
     end 
+
+    def get_reviews
+        coffee = Coffee.find(params[:id])
+        coffee_reviews = coffee.get_reviews 
+        render json: coffee_reviews, status: :ok
+    end
 
 
     private
     
     #Review strong params and why they are useful with updates
     def coffee_params
-        params.permit(:name, :brand, :price)
+        params.permit(:name, :brand, :price, :reviews)
     end 
 
     def render_not_found_response

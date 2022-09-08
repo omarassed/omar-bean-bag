@@ -7,4 +7,7 @@ class Coffee < ApplicationRecord
 
     belongs_to :user #who created it
 
+    def get_reviews
+        coffee_reviews = self.reviews 
+    end
 end

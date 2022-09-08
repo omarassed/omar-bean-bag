@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :show, :create, :destroy]
   end
   
- 
+  get "/coffees/:id/get_reviews", to: "coffees#get_reviews"
+  # post "/coffees/:id/write_review", to: "coffees#write_review"
+
+  # get "/coffees/:coffee_id/reviews", to "reviews#index"
   get "/users/:id/favorite_coffees", to: "users#favorite_coffees"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

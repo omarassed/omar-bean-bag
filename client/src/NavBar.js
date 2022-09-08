@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBar({ currentUser, updateUser }) {
-  console.log(currentUser);
+
   const handleLogOut = () => {
     // DELETE `/logout`
     fetch("/logout", {
@@ -30,7 +30,7 @@ function NavBar({ currentUser, updateUser }) {
           Log in
         </NavLink>
       )}
-      {currentUser && <span>Hello, {currentUser.username}!</span>}
+      {currentUser && <span>           Hello, {currentUser.username}!</span>}
       </div>
     </nav>
   );

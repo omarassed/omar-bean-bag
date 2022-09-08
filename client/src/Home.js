@@ -1,9 +1,10 @@
 import React from 'react'
 import CoffeeContainer from './CoffeeContainer'
-function Home({ coffees }) {
+
+function Home({ coffees, reviews }) {
   return (
     <div>
-        <CoffeeContainer coffees={coffees} />
+        <CoffeeContainer coffees={coffees} reviews={reviews} />
     </div>
   )
 }

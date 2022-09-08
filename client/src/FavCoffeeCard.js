@@ -1,17 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-// import Reviews from "./Reviews";
 
-function CoffeeCard({ coffee, reviewsList }) {
-  const { id, name, brand, price } = coffee;
+function CoffeeCard({ favCoffee }) {
+  const { id, name, brand, price } = favCoffee;
 
   const history = useHistory();
   function handleHistoryCardDetail() {
     history.push(`/coffees/${id}`);
-  }
-
-  function handleHistoryReview() {
-    history.push(`/coffees/${id}/reviews`)
   }
   return (
     <>
@@ -21,7 +16,8 @@ function CoffeeCard({ coffee, reviewsList }) {
           <h1>{brand}</h1>
           <h1>{price}</h1>
           <button onClick={handleHistoryCardDetail}>See Details</button>
-          {/* <p>{reviews}</p> */}
+          {/* onClick={seeReviews} */}
+          <button>See Reviews</button>
         </div>
       </div>
     </>

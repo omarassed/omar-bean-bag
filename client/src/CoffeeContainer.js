@@ -1,9 +1,13 @@
 import React from 'react'
 import CoffeeCard from './CoffeeCard'
-import Reviews from "./Reviews"
+import Review from "./Review"
 
-function CoffeeContainer({ coffees }) {
-    const coffeeList = coffees.map(coffee => <CoffeeCard key={coffee.id} coffee={coffee}/>)
+function CoffeeContainer({ coffees, reviews }) {
+  const reviewsList = reviews.map(review => <Review key={review.id} review={review}/>)
+
+    const coffeeList = coffees.map(coffee => <CoffeeCard key={coffee.id} coffee={coffee} reviewsList={reviewsList}/>)
+  
+    
   return (
     <div>
         {coffeeList}

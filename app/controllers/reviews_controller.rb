@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    skip_before_action :authorize, only: :index
+    skip_before_action :authorize, only: [:index, :create]
     def index 
         
         if params[:coffee_id] 
@@ -23,9 +23,14 @@ class ReviewsController < ApplicationController
         render json: review, status: :ok
     end
 
-    def create 
-        review = Review.create!(review_params)
-        render json: review, status: :created
+    def create
+        if params[:coffee_id] 
+            binding.break
+            coffee = Coffee.find(params[:coffee_id])
+            review = Review.create!(user_id: @current_user.id, coffee_id: coffee.id, rating: params[:rating], comment: params[:comment])
+        end
+        # review = Review.create!(review_params)
+        # render json: review, status: :created
     end
 
     def destroy
@@ -36,6 +41,6 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        params.permit(:rating, :comment, :user_id, :coffee_id)
+        params.permit(:rating, :comment, :coffee_id)
     end
 end

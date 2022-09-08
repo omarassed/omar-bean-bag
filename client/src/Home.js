@@ -1,12 +1,13 @@
-import React from 'react'
-import CoffeeContainer from './CoffeeContainer'
+import React from "react";
+import CoffeeContainer from "./CoffeeContainer";
 
 function Home({ coffees, reviews }) {
   return (
     <div>
-        <CoffeeContainer coffees={coffees} reviews={reviews} />
+      <h1>Check out our coffees!</h1>
+      <CoffeeContainer coffees={coffees} reviews={reviews} />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

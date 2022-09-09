@@ -10,7 +10,7 @@ import Home from "./Home";
 import Login from "./Login";
 import SignUp from "./Signup";
 import UserPage from "./UserPage";
-import Review from "./Review";
+import { UserContext } from "./contexts/Context";
 
 function App() {
   const [coffees, setCoffees] = useState([]);
@@ -80,41 +80,43 @@ function App() {
     setCoffees((current) => current.filter((c) => c.id !== id));
 
   const updateUser = (user) => setCurrentUser(user);
-
+  console.log(updateUser);
   if (errors) return <h1>{errors}</h1>;
 
   return (
     <>
-      <NavBar currentUser={currentUser} updateUser={updateUser} />
-      <Switch>
-        <Route path="/coffees/new">
-          <CoffeeForm addCoffee={addCoffee} />
-        </Route>
+      <UserContext.Provider value={currentUser}>
+        <NavBar currentUser={currentUser} updateUser={updateUser} />
+        <Switch>
+          <Route path="/coffees/new">
+            <CoffeeForm addCoffee={addCoffee} />
+          </Route>
 
-        <Route path="/coffees/:id/edit">
-          <EditCoffeeForm updateCoffee={updateCoffee} />
-        </Route>
+          <Route path="/coffees/:id/edit">
+            <EditCoffeeForm updateCoffee={updateCoffee} />
+          </Route>
 
-        <Route path="/coffees/:id">
-          <CoffeeDetail deleteCoffee={deleteCoffee} user={currentUser} />
-        </Route>
+          <Route path="/coffees/:id">
+            <CoffeeDetail deleteCoffee={deleteCoffee} user={currentUser} />
+          </Route>
 
-        <Route path="/users/new">
-          <SignUp updateUser={updateUser} />
-        </Route>
+          <Route path="/users/new">
+            <SignUp updateUser={updateUser} />
+          </Route>
 
-        <Route path="/users/:id">
-          <UserPage />
-        </Route>
+          <Route path="/users/:id">
+            <UserPage />
+          </Route>
 
-        <Route path="/login">
-          <Login updateUser={updateUser} />
-        </Route>
+          <Route path="/login">
+            <Login updateUser={updateUser} />
+          </Route>
 
-        <Route exact path="/">
-          <Home coffees={coffees} />
-        </Route>
-      </Switch>
+          <Route exact path="/">
+            <Home coffees={coffees} />
+          </Route>
+        </Switch>
+      </UserContext.Provider>
     </>
   );
 }

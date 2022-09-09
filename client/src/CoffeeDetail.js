@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
 
-function CoffeeDetail({ deleteCoffee, user }) {
+function CoffeeDetail({ deleteCoffee }) {
   const [coffee, setCoffee] = useState({});
   const [coffeeReviews, setCoffeeReviews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -80,7 +80,6 @@ function CoffeeDetail({ deleteCoffee, user }) {
 
       <ReviewForm
         coffeeId={params.id}
-        userId={user.id}
         coffeeReviews={coffeeReviews}
         setCoffeeReviews={setCoffeeReviews}
       />

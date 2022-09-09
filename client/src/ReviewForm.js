@@ -1,12 +1,15 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "./contexts/Context";
 
-function ReviewForm({ coffeeId, userId, coffeeReviews, setCoffeeReviews }) {
+function ReviewForm({ coffeeId, coffeeReviews, setCoffeeReviews }) {
+  const user = useContext(UserContext);
+  console.log(user);
   const [formData, setFormData] = useState({
     rating: "",
     comment: "",
     coffee_id: parseInt(coffeeId),
-    user_id: parseInt(userId),
+    user_id: parseInt(user.id),
   });
 
   const [errors, setErrors] = useState([]);

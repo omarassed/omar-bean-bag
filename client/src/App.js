@@ -14,7 +14,6 @@ import Review from "./Review";
 
 function App() {
   const [coffees, setCoffees] = useState([]);
-  const [reviews, setReviews] = useState([]);
   const [errors, setErrors] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
 
@@ -97,13 +96,7 @@ function App() {
         </Route>
 
         <Route path="/coffees/:id">
-          {/* pass reviews here */}
-          <CoffeeDetail
-            deleteCoffee={deleteCoffee}
-            user={currentUser}
-            reviews={reviews}
-            setReviews={setReviews}
-          />
+          <CoffeeDetail deleteCoffee={deleteCoffee} user={currentUser} />
         </Route>
 
         <Route path="/users/new">
@@ -118,12 +111,8 @@ function App() {
           <Login updateUser={updateUser} />
         </Route>
 
-        <Route path="/coffees/:id/reviews">
-          <Review reviews={reviews} />
-        </Route>
-
         <Route exact path="/">
-          <Home coffees={coffees} reviews={reviews} />
+          <Home coffees={coffees} />
         </Route>
       </Switch>
     </>

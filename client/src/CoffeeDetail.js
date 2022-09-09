@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
 
-function CoffeeDetail({ deleteCoffee, user, reviews, setReviews }) {
+function CoffeeDetail({ deleteCoffee, user }) {
   const [coffee, setCoffee] = useState({});
   const [coffeeReviews, setCoffeeReviews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,6 @@ function CoffeeDetail({ deleteCoffee, user, reviews, setReviews }) {
 
   const params = useParams();
   const history = useHistory();
-  // console.log(params.id)
 
   useEffect(() => {
     fetch(`/coffees/${params.id}`).then((res) => {
@@ -55,23 +54,10 @@ function CoffeeDetail({ deleteCoffee, user, reviews, setReviews }) {
     });
   }, []);
 
-  const reviewsList = coffeeReviews.map((review) => (
+  const allCoffeeReviews = coffeeReviews.map((review) => (
     <Review key={review.id} review={review} />
   ));
   console.log(coffeeReviews);
-
-  // const handleReview = () => {
-  //   fetch(`/reviews`,{
-  //     method:'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body:JSON.stringify(/reviews)
-  //   })
-  //   .then(res => {
-  //     if(res.ok){
-  //       history.push('/users/1')}
-  //   })
-  // }
-
   if (errors) return <h1>{errors}</h1>;
   if (loading) return <h1>Loading</h1>;
 
@@ -91,14 +77,14 @@ function CoffeeDetail({ deleteCoffee, user, reviews, setReviews }) {
         <Link to={`/coffees/${id}/edit`}>Edit Coffee</Link>
       </button>
       <button onClick={handleDelete}>Delete Coffee</button>
-      {/* <button onClick={handleReview} >See Reviews</button> */}
+
       <ReviewForm
         coffeeId={params.id}
         userId={user.id}
-        reviews={reviews}
-        setReviews={setReviews}
+        coffeeReviews={coffeeReviews}
+        setCoffeeReviews={setCoffeeReviews}
       />
-      <div>{reviewsList}</div>
+      <div>{allCoffeeReviews}</div>
 
       <button>Leave a Review!</button>
     </>

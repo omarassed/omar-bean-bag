@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-function ReviewForm({ coffeeId, userId, reviews, setReviews }) {
+function ReviewForm({ coffeeId, userId, coffeeReviews, setCoffeeReviews }) {
   const [formData, setFormData] = useState({
     rating: "",
     comment: "",
@@ -26,7 +26,7 @@ function ReviewForm({ coffeeId, userId, reviews, setReviews }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((review) => {
-          setReviews([...reviews, review]);
+          setCoffeeReviews([...coffeeReviews, review]);
         });
       } else {
         res.json().then((data) => {
@@ -35,7 +35,6 @@ function ReviewForm({ coffeeId, userId, reviews, setReviews }) {
       }
     });
   }
-  console.log(formData);
 
   return (
     <div>

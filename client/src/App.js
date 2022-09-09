@@ -98,7 +98,12 @@ function App() {
 
         <Route path="/coffees/:id">
           {/* pass reviews here */}
-          <CoffeeDetail deleteCoffee={deleteCoffee} />
+          <CoffeeDetail
+            deleteCoffee={deleteCoffee}
+            user={currentUser}
+            reviews={reviews}
+            setReviews={setReviews}
+          />
         </Route>
 
         <Route path="/users/new">

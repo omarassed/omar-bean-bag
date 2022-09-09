@@ -1,8 +1,9 @@
 import { Link, useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Review from "./Review";
+import ReviewForm from "./ReviewForm";
 
-function CoffeeDetail({ deleteCoffee }) {
+function CoffeeDetail({ deleteCoffee, user, reviews, setReviews }) {
   const [coffee, setCoffee] = useState({});
   const [coffeeReviews, setCoffeeReviews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -91,7 +92,14 @@ function CoffeeDetail({ deleteCoffee }) {
       </button>
       <button onClick={handleDelete}>Delete Coffee</button>
       {/* <button onClick={handleReview} >See Reviews</button> */}
+      <ReviewForm
+        coffeeId={params.id}
+        userId={user.id}
+        reviews={reviews}
+        setReviews={setReviews}
+      />
       <div>{reviewsList}</div>
+
       <button>Leave a Review!</button>
     </>
   );

@@ -86,7 +86,7 @@ function App() {
   return (
     <>
       <UserContext.Provider value={currentUser}>
-        <NavBar currentUser={currentUser} updateUser={updateUser} />
+        <NavBar updateUser={updateUser} />
         <Switch>
           <Route path="/coffees/new">
             <CoffeeForm addCoffee={addCoffee} />

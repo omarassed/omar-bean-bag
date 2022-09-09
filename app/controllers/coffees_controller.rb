@@ -23,7 +23,7 @@ class CoffeesController < ApplicationController
     end 
 
     def destroy
-        coffee = Coffee.find(coffee_params[:id])
+        coffee = Coffee.find(params[:id])
         coffee.destroy
         head :no_content 
     end 

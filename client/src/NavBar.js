@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "./contexts/Context";
 
-function NavBar({ currentUser, updateUser }) {
-
+function NavBar({ updateUser }) {
+  const user = useContext(UserContext);
   const handleLogOut = () => {
     // DELETE `/logout`
     fetch("/logout", {
@@ -14,23 +15,33 @@ function NavBar({ currentUser, updateUser }) {
     <nav>
       <div className="nav-links">
         <div className="nav-home">
-      <NavLink to="/">Home</NavLink>
-      </div>
-      <div className="nav-submit">
-      <NavLink exact to="/coffees/new">
-        Submit a Coffee
-      </NavLink>
-      </div>
-      <p>{currentUser ? <NavLink to={`/users/${currentUser.id}`}>Account</NavLink> : null }</p>
-      <p>{currentUser? null : <NavLink exact to="/users/new">Sign up</NavLink>}</p>
-      {currentUser ? (
-        <button onClick={handleLogOut}>Log Out</button>  /*Logout navlink here*/
-      ) : (
-        <NavLink exact to="/login">
-          Log in
-        </NavLink>
-      )}
-      {currentUser && <span>           Hello, {currentUser.username}!</span>}
+          <NavLink to="/">Home</NavLink>
+        </div>
+        <div className="nav-submit">
+          <NavLink exact to="/coffees/new">
+            Submit a Coffee
+          </NavLink>
+        </div>
+        <p>
+          {user ? <NavLink to={`/users/${user.id}`}>Account</NavLink> : null}
+        </p>
+        <p>
+          {user ? null : (
+            <NavLink exact to="/users/new">
+              Sign up
+            </NavLink>
+          )}
+        </p>
+        {user ? (
+          <button onClick={handleLogOut}>
+            Log Out
+          </button> /*Logout navlink here*/
+        ) : (
+          <NavLink exact to="/login">
+            Log in
+          </NavLink>
+        )}
+        {user && <span> Hello, {user.username}!</span>}
       </div>
     </nav>
   );

@@ -53,6 +53,33 @@ nav {
   margin-bottom: 15px;
 }
 
+/* intro-area */
+.welcome-msg {
+  color:rgb(81, 38, 38);
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+.intro-one {
+  max-width: 50%;
+  text-align: right;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+  font-style: italic;
+}
+.intro-two {
+  padding: 100px;
+  font-family: 'Courier New', Courier, monospace;
+  max-width: fit-content;
+  max-height: fit-content;
+  margin-left: 100px;
+  text-align: left;
+  font-size: 30px;
+  justify-content: center;
+  font-weight: 200;
+  border: solid green;
+  border-radius: 50%;
+  background-color: rgb(156, 110, 53);
+}
 .add-coffee-button {
   margin-top: 10px;
   padding-top: 2px;

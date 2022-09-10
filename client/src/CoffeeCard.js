@@ -21,7 +21,9 @@ function CoffeeCard({ coffee, reviewsList }) {
             <h3>{brand}</h3>
             <h3>{price}</h3>
           </div>
-          <button onClick={handleHistoryCardDetail}>See Details</button>
+          <button className="see-details-btn" onClick={handleHistoryCardDetail}>
+            See Details
+          </button>
         </div>
       </div>
     </>

@@ -16,9 +16,11 @@ function CoffeeCard({ coffee, reviewsList }) {
     <>
       <div className="coffee-card-container">
         <div className="coffee-card">
-          <h2>{name}</h2>
-          <h1>{brand}</h1>
-          <h1>{price}</h1>
+          <div className="card-contents">
+            <h4>{name}</h4>
+            <h3>{brand}</h3>
+            <h3>{price}</h3>
+          </div>
           <button onClick={handleHistoryCardDetail}>See Details</button>
         </div>
       </div>

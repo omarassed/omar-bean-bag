@@ -41,7 +41,7 @@ function ReviewForm({ coffeeId, coffeeReviews, setCoffeeReviews }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="review-form">
         <label>Leave a Rating 1-5</label>
         <input
           name="rating"
@@ -55,7 +55,7 @@ function ReviewForm({ coffeeId, coffeeReviews, setCoffeeReviews }) {
           onChange={handleChange}
           value={formData.comment}
         ></input>
-        <button>Submit</button>
+        <button className="review-submit">Submit</button>
       </form>
     </div>
   );

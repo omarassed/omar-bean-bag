@@ -64,8 +64,8 @@ function CoffeeDetail({ deleteCoffee }) {
   const { id, name, brand, price } = coffee;
   return (
     <>
-      <h1>{name}</h1>
-      <div className="wrapper">
+      <h1 className="coffee-detail-title">{name}</h1>
+      <div className="coffee-detail">
         <div>
           <h3>Brand:</h3>
           <p>{brand}</p>
@@ -73,10 +73,12 @@ function CoffeeDetail({ deleteCoffee }) {
           <p>{price}</p>
         </div>
       </div>
-      <button>
-        <Link to={`/coffees/${id}/edit`}>Edit Coffee</Link>
-      </button>
-      <button onClick={handleDelete}>Delete Coffee</button>
+      <div className="edit-delete-buttons">
+        <button>
+          <Link to={`/coffees/${id}/edit`}>Edit Coffee</Link>
+        </button>
+        <button onClick={handleDelete}> Delete Coffee</button>
+      </div>
 
       <ReviewForm
         coffeeId={params.id}
@@ -84,8 +86,6 @@ function CoffeeDetail({ deleteCoffee }) {
         setCoffeeReviews={setCoffeeReviews}
       />
       <div>{allCoffeeReviews}</div>
-
-      <button>Leave a Review!</button>
     </>
   );
 }

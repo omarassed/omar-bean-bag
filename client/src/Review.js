@@ -10,7 +10,7 @@ function Review({ review }) {
   //   }
 
   return (
-    <div>
+    <div className="comment-box">
       <p>Rating: {rating}</p>
       <p>Comment: {comment}</p>
     </div>

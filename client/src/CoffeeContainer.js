@@ -7,7 +7,7 @@ function CoffeeContainer({ coffees }) {
     <CoffeeCard key={coffee.id} coffee={coffee} />
   ));
 
-  return <div>{coffeeList}</div>;
+  return <div className="coffee-list">{coffeeList}</div>;
 }
 
 export default CoffeeContainer;

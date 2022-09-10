@@ -31,6 +31,7 @@ nav {
   background-color: rgb(118, 80, 80);
   width: 100%; */
   display: flex;
+  flex-direction: row;
   width: 100%;
   /* margin: 1rem 2rem; */
   text-decoration: none;
@@ -52,6 +53,13 @@ nav {
   margin-bottom: 15px;
 }
 
+.add-coffee-button {
+  margin-top: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;;
+  background-color: rgb(52, 97, 70);
+}
+
 /* .coffee-card  */
 
 .coffee-card {
@@ -61,7 +69,7 @@ box-shadow: 0 4px 8px 0 rgba(171, 33, 33, 0.2);
 transition: 0.3s;
 border: solid grey;
 border-radius: 15px;
-max-width: 30%;
+size: 50rem;
 background-color: rgba(208, 94, 94, 0.772);
 }
 
@@ -70,7 +78,68 @@ background-color: rgba(208, 94, 94, 0.772);
     box-shadow: 0 8px 16px 0 rgba(114, 6, 6, 0.376);
   }
 
+.card-contents {
+  max-width: fit-content;
+}
 
+  .coffee-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+  }
+  .coffee-detail {
+    border: solid black;
+    background-color: darkolivegreen;
+    max-width: 50%;
+    padding: 5px;
+    border-radius: 1rem;
+    margin-left: 15px;
+  }
+  .coffee-detail-title {
+    margin: 18 auto;
+    margin-left: 20px ;
+  }
+  .edit-delete-buttons {
+    margin-left: 50px;
+  }
+/* review form */
+.review-form{
+  margin-left:25px;
+  padding: 10px;
+  margin-bottom: 25px;
+}
+.review-submit {
+  margin-top: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;;
+  background-color: rgb(52, 97, 70);
+  border-radius: 1rem;
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  max-width: min-content;
+  opacity: 90%;
+}
+.review-submit:hover {
+  box-shadow: 0 8px 16px 0 rgba(114, 6, 6, 0.376);
+}
+
+  /* comment section */
+  .comment-box {
+    margin-left: 25px;
+    padding: 4px 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    background-color: white;
+    max-width: 50%;
+    border: black;
+    border-radius: 5%;
+    justify-content: center;
+  
+  }
+  .comment-box:hover {
+  
+    box-shadow: 0 8px 16px 0 rgba(114, 6, 6, 0.376);
+  }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
